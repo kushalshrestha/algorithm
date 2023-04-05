@@ -2,20 +2,22 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Lab1Q1 {
-    private static int[] inputSizes = {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
+    private static final int[] inputSizes = {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
     private static long startTime;
     private static long endTime;
+    public static final Random random = new Random();
+
 
     public static void main(String[] args) {
         performAlgorithm2();
         performAlgorithm3();
-
+        performAlgorithm4();
     }
 
     private static void performAlgorithm2() {
         System.out.println("/* Algorithm: Use a nested loop to solve the problem without creating an extra array */");
         for(int inputSize : inputSizes){
-            int[] testArray = generateRandomNumbers(inputSize, true);
+            int[] testArray = generateRandomNumbers(inputSize);
             largestDistanceUsingAlgorithm2(testArray);
         }
     }
@@ -23,7 +25,7 @@ public class Lab1Q1 {
     private static void performAlgorithm3() {
         System.out.println("/* Use one loop. Find max and min of even integers. Compute max – min. */");
         for(int inputSize : inputSizes){
-            int[] testArray = generateRandomNumbers(inputSize, true);
+            int[] testArray = generateRandomNumbers(inputSize);
             largestDistanceUsingAlgorithm3(testArray);
         }
     }
@@ -31,7 +33,7 @@ public class Lab1Q1 {
     private static void performAlgorithm4() {
         System.out.println("/* Use Streams to find the max and min. Compute max – min. */");
         for(int inputSize : inputSizes){
-            int[] testArray = generateRandomNumbers(inputSize, true);
+            int[] testArray = generateRandomNumbers(inputSize);
             largestDistanceUsingAlgorithm4(testArray);
         }
     }
@@ -86,12 +88,12 @@ public class Lab1Q1 {
         System.out.println("Input Size : " + inputSize + " | Total Time in microsecond : " + (double)((endTime - startTime)/1000));
         System.out.println("================");
     }
-    private static int[] generateRandomNumbers(int size, boolean isEven) {
+    private static int[] generateRandomNumbers(int size) {
         int[] array = new int[size];
-        Random random = new Random();
+
         for(int i=0; i<size; i++) {
             int randomNumber = random.nextInt(10000);
-            if(randomNumber % 2 != 0 && isEven) {
+            if(randomNumber % 2 != 0) {
                 randomNumber++;
             }
             array[i] = randomNumber;
