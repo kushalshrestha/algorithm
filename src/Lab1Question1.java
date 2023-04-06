@@ -1,14 +1,15 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Lab1Question1 {
+    public static final Random random = new Random();
     private static final int[] inputSizes = {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
     private static long startTime;
     private static long endTime;
-    public static final Random random = new Random();
-
 
     public static void main(String[] args) {
         performAlgorithm1();
@@ -125,7 +126,7 @@ public class Lab1Question1 {
         System.out.println("================");
     }
 
-    private static int[] generateRandomNumbers(int size) {
+    private static int @NotNull [] generateRandomNumbers(int size) {
         int[] array = new int[size];
 
         for (int i = 0; i < size; i++) {
