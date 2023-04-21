@@ -7,9 +7,11 @@ comparisons.
 */
 public class BuildHeapTopDown {
     private static final int[] NUMBERS = new int[]{56, 39, 14, 18, 75, 100, 102};
+    private static int comparisions = 0;
 
     public static void main(String[] args) {
         heapTopDownComparision(NUMBERS);
+        System.out.println("Number of comparisions made : " + comparisions);
     }
 
     private static void heapTopDownComparision(int[] numbers) {
@@ -34,6 +36,7 @@ public class BuildHeapTopDown {
         Integer currentNodeValue = numbers[i - 1];
 
         if (currentNodeValue > parentNodeValue) {
+            comparisions++;
             swap(parentNodeIndex, currentNodeIndex);
             currentNodeIndex = parentNodeIndex;
             upHeap(currentNodeIndex, numbers);
